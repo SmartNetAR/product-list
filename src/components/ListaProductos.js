@@ -6,8 +6,6 @@ class ListaProductos extends Component {
         super(props);
     }
 
-
-
     render() {
         return (
             <div>

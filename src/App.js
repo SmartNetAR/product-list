@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ListaProductos from './components/ListaProductos';
+import Contador from './components/Contador';
 
 function App() {
 
@@ -39,9 +39,14 @@ function App() {
     
     const productosAReponerStock = () => productos.filter(producto => producto.cantidad === 1)
 
+    const handleIncrement = ( parametro ) => {
+      alert(parametro);
+    }
+
   return (
     <div className="App">
       <header className="App-header">
+        <Contador onIncrement={handleIncrement} />
         <ListaProductos titulo="Productos en stock" productos={productosEnStock()} />
         <ListaProductos titulo="Productos sin stock" productos={productosSinStock()} />
         <ListaProductos titulo="Productos a reponer" productos={productosAReponerStock()} />
