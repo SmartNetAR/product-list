@@ -12,38 +12,16 @@ class App extends React.Component {
                 producto: '',
                 cantidad: 0,
             },
-            productos: [
-                {
-                id: 0,
-                nombre: "banana",
-                cantidad: 10
-                },
-                {
-                id: 1,
-                nombre: "manzana",
-                cantidad: 0
-                },
-                {
-                id: 2,
-                nombre: "naranja",
-                cantidad: 5
-                },
-                {
-                id: 3,
-                nombre: "durazno",
-                cantidad: 1
-                },
-                {
-                id: 4,
-                nombre: "anana",
-                cantidad: 0
-                }
-            ]
+            productos: []
         }
 
         this.handleChangeForm = this.handleChangeForm.bind(this);
     }
     
+
+    componentDidMount() {
+        this.getProducts();
+    }
 
 
     handleChangeForm(e) {
@@ -96,9 +74,13 @@ class App extends React.Component {
         })
 
 
+    }
 
-
-
+    getProducts = async () => {
+        const respuesta = await fetch("http://localhost:3000/productos.json");
+        const datos = await respuesta.json()
+        console.log(datos);
+        this.setState( {productos:datos })
     }
 
     render() {
